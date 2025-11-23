@@ -1,0 +1,27 @@
+{
+  "name": "dashboard",
+  "version": "1.0.0",
+  "description": "Sistema de monitoramento IoT Devices ESP32",
+  "main": "server.js",
+  "scripts": {
+    "device": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "mongoose": "^9.0.0",
+    "slug": "^6.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  },
+  "engines": {
+  "node": "24.x"
+  }
+}
