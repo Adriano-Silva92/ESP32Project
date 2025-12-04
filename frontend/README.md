@@ -37,5 +37,5 @@ O objetivo principal é criar uma plataforma escalável e simples para:
 
 ---
 
-## 🗂️ Estrutura do Projeto
+
 
