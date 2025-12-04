@@ -1,16 +1,41 @@
-# React + Vite
+# 🚀 Dashboard IoT – Monitoramento Remoto com Node.js, React, Vite e MongoDB
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este projeto consiste em uma plataforma completa de monitoramento e telemetria para máquinas e equipamentos utilizando **Node.js**, **Express**, **MongoDB Atlas**, **React**, **Vite** e **Tailwind CSS**, com deploy realizado na **Fly.io** utilizando Docker.
 
-Currently, two official plugins are available:
+O sistema permite visualizar dados coletados por dispositivos IoT (como ESP32), realizar gerenciamento de dispositivos e exibir um painel administrativo moderno e responsivo.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 📌 Tecnologias Utilizadas
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### **Backend**
+- Node.js
+- Express
+- MongoDB Atlas
+- Mongoose
+- dotenv
+- Fly.io (deploy com Docker)
 
-## Expanding the ESLint configuration
+### **Frontend**
+- React (componentes funcionais)
+- Vite (build rápido)
+- Tailwind CSS
+- Hooks e componentização
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🎯 Objetivo do Projeto
+
+O objetivo principal é criar uma plataforma escalável e simples para:
+
+- Monitorar dados em tempo real de diversos dispositivos  
+- Registrar leitura de sensores (temperatura, tensão da bateria, pressão, etc.)  
+- Exibir informações em um dashboard moderno  
+- Integrar dispositivos IoT via API  
+- Controlar usuários e dispositivos  
+- Permitir expansão futura (Wi-Fi, 4G, novos sensores)
+
+---
+
+## 🗂️ Estrutura do Projeto
+
