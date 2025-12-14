@@ -18,6 +18,60 @@ router.get('/', async (req, res) => {
     }
 });
 
+// === GET: Detalhes do device ===
+router.get('/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        const device = await Device.findById(id);
+
+        if (!device) {
+            return res.status(404).json({
+                success: false,
+                message: "Device não encontrado"
+            });
+        }
+
+        res.json({
+            success: true,
+            message: device
+        });
+
+    } catch (err) {
+        res.status(500).json({
+            success: false,
+            message: "Erro com o banco de dados!",
+            error: err.message
+        });
+    }
+});
+
+// === GET: Histórico de medidas do device ===
+router.get('/:id/medidas', async (req, res) => {
+  try {
+    const device = await Device.findById(req.params.id);
+
+    if (!device) {
+      return res.status(404).json({
+        success: false,
+        message: 'Device não encontrado'
+      });
+    }
+
+    res.json({
+      success: true,
+      message: device.medidas
+    });
+
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: 'Erro ao buscar histórico',
+      error: err.message
+    });
+  }
+});
+
 // === POST: cadastra novo device ===
 router.post('/', async (req, res) => {
     try {
@@ -26,7 +80,9 @@ router.post('/', async (req, res) => {
             nome: req.body.nome,
             kwh: req.body.kwh,
             corrente: req.body.corrente,
-            voltagem: req.body.voltagem
+            voltagem: req.body.voltagem,
+            imagem: req.body.imagem,
+            email: req.body.email
         });
 
         console.log("Novo Device:", novoDevice); // Debug
@@ -47,6 +103,39 @@ router.post('/', async (req, res) => {
         });
     }
 });
+// === POST: adicionar nova medição ===
+router.post('/:id/medidas', async (req, res) => {
+  try {
+    const device = await Device.findById(req.params.id);
+
+    if (!device) {
+      return res.status(404).json({
+        success: false,
+        message: 'Device não encontrado'
+      });
+    }
+
+    device.medidas.push({
+      voltagem: req.body.voltagem,
+      corrente: req.body.corrente,
+      kwh: req.body.kwh
+    });
+
+    await device.save();
+
+    res.json({
+      success: true,
+      message: 'Medição adicionada com sucesso'
+    });
+
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      error: err.message
+    });
+  }
+});
+
 //Atualizar o dados do dispositivo pelo ID
 router.put('/:id', async (req, res) => {
     try {
@@ -54,9 +143,12 @@ router.put('/:id', async (req, res) => {
             req.params.id,
             {
                 $set: {
+                    nome: req.body.nome,
                     kwh: req.body.kwh,
                     corrente: req.body.corrente,
-                    voltagem: req.body.voltagem
+                    voltagem: req.body.voltagem,
+                    imagem: req.body.imagem,
+                    email: req.body.email
                 }
             },
             { new: true } // retorna o documento já atualizado

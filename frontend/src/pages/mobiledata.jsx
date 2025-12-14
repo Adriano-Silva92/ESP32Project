@@ -1,28 +1,32 @@
 import React from 'react'
 import styled from 'styled-components'
+import Cards from '../components/cards'
 
-const DivData = styled.div `
-    flex: 1;
-    padding-right: 5rem;
-    h1{
-        font-weight: bold;
-        font-size: 3rem;
-        color: white;
-        text-align: center;
+const DivCards = styled.div `
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    img {
+        width: 200px;
+        height: 200px;
+        border-radius: 12px;
+        border: 2px solid #333;
+        object-fit: cover;
     }
-    h2{
-        font-weight: bold;
-        font-size: 2rem;
-        color: white;
-        text-align: center;
-    }
+`;
+
+const DivDevices = styled.div `
+    min-height: 30vh;
+    overflow: hidden;
+    padding: 5rem 10rem;
 `;
 
 const Data = ()=>{
     return(
-        <DivData>
-            <h1> Dados do Dispositivo </h1>
-        </DivData>
+        <DivDevices>
+            <DivCards>
+                <Cards />
+            </DivCards>
+        </DivDevices>
 
     )
 }
